@@ -1,6 +1,5 @@
-const { log, clear, error } = require("console");
-
 const cookieParser = require("cookie-parser");
+const dbgr = require("debug")("development: main_app");
 const path = require("path");
 
 const express = require("express");
@@ -22,11 +21,10 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.set("view engine", "ejs");
 
-app.get("/owners", ownersRouter);
-app.get("/users", usersRouter);
-app.get("/products", productsRouter);
+app.use("/owners", ownersRouter);
+app.use("/users", usersRouter);
+app.use("/products", productsRouter);
 
 app.listen(port, function () {
-  clear(); // clearing the console
-  log(`Server is listening on port ${port}`); // Server is listening on port 3000
+  dbgr(`Server is listening on port ${port}`);
 });
