@@ -10,7 +10,6 @@ const userSchema = mongoose.Schema({
   email: String,
   password: String,
   cart: { type: Array, default: [] },
-  isadmin: Boolean,
   order: { type: Array, default: [] },
   contact: Number,
   picture: String,
